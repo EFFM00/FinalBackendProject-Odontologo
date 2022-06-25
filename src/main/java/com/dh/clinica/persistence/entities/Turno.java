@@ -1,26 +1,20 @@
-package com.dh.clinica.model;
+package com.dh.clinica.persistence.entities;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class Turno {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+    @Column
     private Paciente paciente;
+    @Column
     private Odontologo odontologo;
+    @Column
     private Date fecha;
-
-    public Turno(Paciente paciente, Odontologo odontologo, Date fecha) {
-        this.paciente = paciente;
-        this.odontologo = odontologo;
-        this.fecha = fecha;
-    }
-
-    public Turno(Integer id, Paciente paciente, Odontologo odontologo, Date fecha) {
-        this.id = id;
-        this.paciente = paciente;
-        this.odontologo = odontologo;
-        this.fecha = fecha;
-    }
 
     public Integer getId() {
         return id;

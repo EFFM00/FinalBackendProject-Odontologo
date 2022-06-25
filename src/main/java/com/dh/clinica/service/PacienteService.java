@@ -1,8 +1,9 @@
 package com.dh.clinica.service;
 
 
-import com.dh.clinica.dao.IDao;
-import com.dh.clinica.model.Paciente;
+import com.dh.clinica.persistence.entities.Paciente;
+import com.dh.clinica.persistence.entities.repository.PacienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -12,30 +13,26 @@ import java.util.Optional;
 @Service
 public class PacienteService {
 
-    private IDao<Paciente> pacienteIDao;
-
-    public PacienteService(IDao<Paciente> pacienteIDao) {
-        this.pacienteIDao = pacienteIDao;
-    }
+    @Autowired
+    PacienteRepository pacienteRepository;
 
     public Paciente guardar(Paciente paciente) {
-        paciente.setFechaIngreso(new Date());
-        return pacienteIDao.guardar(paciente);
+        return pacienteRepository.save(paciente);
     }
 
     public Optional<Paciente> buscar(Integer id) {
-        return pacienteIDao.buscar(id);
+        return pacienteRepository.findById(id);
     }
 
     public List<Paciente> buscarTodos() {
-        return pacienteIDao.buscarTodos();
+        return pacienteRepository.findAll();
     }
 
     public void eliminar(Integer id) {
-        pacienteIDao.eliminar(id);
+        pacienteRepository.deleteById(id);
     }
 
     public Paciente actualizar(Paciente p) {
-        return pacienteIDao.actualizar(p);
+        return pacienteRepository.save(p);
     }
 }

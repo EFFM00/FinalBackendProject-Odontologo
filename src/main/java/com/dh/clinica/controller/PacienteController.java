@@ -1,8 +1,6 @@
 package com.dh.clinica.controller;
 
-import com.dh.clinica.dao.impl.DomicilioDaoH2;
-import com.dh.clinica.dao.impl.PacienteDaoH2;
-import com.dh.clinica.model.Paciente;
+import com.dh.clinica.persistence.entities.Paciente;
 import com.dh.clinica.service.PacienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

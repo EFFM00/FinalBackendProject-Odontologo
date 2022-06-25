@@ -1,12 +1,8 @@
 package com.dh.clinica.controller;
 
 
-import com.dh.clinica.dao.impl.DomicilioDaoH2;
-import com.dh.clinica.dao.impl.OdontologoDaoH2;
-import com.dh.clinica.dao.impl.PacienteDaoH2;
-import com.dh.clinica.dao.impl.TurnoListRepository;
-import com.dh.clinica.model.Paciente;
-import com.dh.clinica.model.Turno;
+import com.dh.clinica.persistence.entities.Paciente;
+import com.dh.clinica.persistence.entities.Turno;
 import com.dh.clinica.service.OdontologoService;
 import com.dh.clinica.service.PacienteService;
 import com.dh.clinica.service.TurnoService;
@@ -22,13 +18,13 @@ import java.util.List;
 public class TurnoController {
 
     @Autowired
-    private TurnoService turnoService = new TurnoService(new TurnoListRepository());
+    private TurnoService turnoService;
 
     @Autowired
-    private PacienteService pacienteService = new PacienteService(new PacienteDaoH2(new DomicilioDaoH2()));
+    private PacienteService pacienteService;
 
     @Autowired
-    private OdontologoService odontologoService = new OdontologoService(new OdontologoDaoH2());
+    private OdontologoService odontologoService;
 
     @PostMapping("/new")
     public ResponseEntity<Turno> registrarTurno(@RequestBody Turno turno) {

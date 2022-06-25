@@ -1,37 +1,24 @@
-package com.dh.clinica.model;
+package com.dh.clinica.persistence.entities;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class Paciente {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+    @Column
     private String nombre;
+    @Column
     private String apellido;
+    @Column
     private String dni;
+    @Column
     private Date fechaIngreso;
+    @Column
     private Domicilio domicilio;
-
-    public Paciente() {
-    }
-
-    public Paciente(Integer id, String nombre, String apellido, String dni, Date fechaIngreso, Domicilio domicilio) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.fechaIngreso = fechaIngreso;
-        this.domicilio = domicilio;
-    }
-
-    public Paciente(String nombre, String apellido, String dni, Date fechaIngreso, Domicilio domicilio) {
-
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.fechaIngreso = fechaIngreso;
-        this.domicilio = domicilio;
-    }
-
 
     public String getApellido() {
         return apellido;
@@ -79,17 +66,5 @@ public class Paciente {
 
     public void setDomicilio(Domicilio domicilio) {
         this.domicilio = domicilio;
-    }
-
-    @Override
-    public String toString() {
-        return "Paciente{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", dni='" + dni + '\'' +
-                ", fechaIngreso=" + fechaIngreso +
-                ", domicilio=" + domicilio +
-                '}';
     }
 }

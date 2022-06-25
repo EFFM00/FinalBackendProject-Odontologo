@@ -1,7 +1,6 @@
 package com.dh.clinica.controller;
 
-import com.dh.clinica.dao.impl.OdontologoDaoH2;
-import com.dh.clinica.model.Odontologo;
+import com.dh.clinica.persistence.entities.Odontologo;
 import com.dh.clinica.service.OdontologoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

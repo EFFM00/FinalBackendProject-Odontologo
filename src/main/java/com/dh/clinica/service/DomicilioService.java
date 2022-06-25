@@ -1,8 +1,9 @@
 package com.dh.clinica.service;
 
 
-import com.dh.clinica.dao.IDao;
-import com.dh.clinica.model.Domicilio;
+import com.dh.clinica.persistence.entities.Domicilio;
+import com.dh.clinica.persistence.entities.repository.DomicilioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,27 +11,25 @@ import java.util.Optional;
 
 @Service
 public class DomicilioService {
-    private IDao<Domicilio> domicilioDao;
 
-    public DomicilioService(IDao<Domicilio> domicilioDao) {
-        this.domicilioDao = domicilioDao;
-    }
+    @Autowired
+    DomicilioRepository domicilioRepository;
 
     public Domicilio guardar(Domicilio d) {
-        domicilioDao.guardar(d);
-        return d;
+        return domicilioRepository.save(d);
     }
 
     public Optional<Domicilio> buscar(Integer id) {
-        return domicilioDao.buscar(id);
+        return domicilioRepository.findById(id);
     }
 
     public List<Domicilio> buscarTodos() {
-        return domicilioDao.buscarTodos();
+        return domicilioRepository.findAll();
     }
 
     public void eliminar(Integer id) {
-        domicilioDao.eliminar(id);
+        if(domicilioRepository.findById(id).isPresent()){
+            domicilioRepository.deleteById(id);
+        }
     }
-
 }

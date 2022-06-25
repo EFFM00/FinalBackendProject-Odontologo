@@ -1,8 +1,7 @@
 package com.dh.clinica;
 
-import com.dh.clinica.dao.configuracion.ConfiguracionJDBC;
-import com.dh.clinica.dao.impl.OdontologoDaoH2;
-import com.dh.clinica.model.Odontologo;
+import com.dh.clinica.repository.configuracion.ConfiguracionJDBC;
+import com.dh.clinica.persistence.entities.Odontologo;
 import com.dh.clinica.service.OdontologoService;
 import org.junit.Assert;
 import org.junit.BeforeClass;

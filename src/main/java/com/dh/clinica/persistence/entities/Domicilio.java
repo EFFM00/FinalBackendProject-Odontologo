@@ -1,29 +1,24 @@
-package com.dh.clinica.model;
+package com.dh.clinica.persistence.entities;
 
 
+import javax.persistence.*;
+
+@Entity
 public class Domicilio {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+    @Column
     private String calle;
+    @Column
     private String numero;
+    @Column
     private String localidad;
+    @Column
     private String provincia;
 
     public Domicilio() {
-    }
-
-    public Domicilio(Integer id, String calle, String numero, String localidad, String provincia) {
-        this.id = id;
-        this.calle = calle;
-        this.numero = numero;
-        this.localidad = localidad;
-        this.provincia = provincia;
-    }
-
-    public Domicilio(String calle, String numero, String localidad, String provincia) {
-        this.calle = calle;
-        this.numero = numero;
-        this.localidad = localidad;
-        this.provincia = provincia;
     }
 
     public Integer getId() {
@@ -64,16 +59,5 @@ public class Domicilio {
 
     public void setProvincia(String provincia) {
         this.provincia = provincia;
-    }
-
-    @Override
-    public String toString() {
-        return "Domicilio{" +
-                "id=" + id +
-                ", calle='" + calle + '\'' +
-                ", numero='" + numero + '\'' +
-                ", localidad='" + localidad + '\'' +
-                ", provincia='" + provincia + '\'' +
-                '}';
     }
 }
